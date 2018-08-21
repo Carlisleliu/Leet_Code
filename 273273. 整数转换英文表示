@@ -1,0 +1,43 @@
+```
+def numberToWords(self, num):
+    """
+    :type num: int
+    :rtype: str
+    """
+    singles = ['','One','Two','Three','Four','Five','Six','Seven','Eight','Nine']
+    
+    tens1 = ['Ten','Eleven','Twelve','Thirteen','Fourteen',\
+              'Fifteen','Sixteen','Seventeen','Eighteen','Nineteen']
+    
+    tens2 = ['Twenty','Thirty','Forty','Fifty','Sixty','Seventy','Eighty','Ninety']
+    
+    scales = ['Nonillion','Octillion','Septillion','Sextillion','Quintillion',\
+              'Quadrillion','Trillion','Billion','Million','Thousand','']
+    scales = scales[::-1]
+    
+    result = ''
+    
+    if num == 0:
+        result = result + 'Zero'
+        return result
+    
+    for i in range(30,-1,-3):
+        a = num // 10**i
+        num = num % 10**i
+        if a != 0:
+            if a // 100 != 0:
+                result = result + ' ' + singles[a//100] + ' Hundred'
+            a = a % 100
+            if a // 10 == 1:
+                a = a % 10
+                result = result + ' ' + tens1[a//1] + ' ' + scales[i//3]
+            elif a // 10 > 1:
+                result = result + ' ' + tens2[a//10-2]
+                a = a % 10
+                result = result + ' ' + singles[a//1] + ' ' + scales[i//3]
+            else:
+                a = a % 10
+                result = result + ' ' + singles[a//1] + ' ' + scales[i//3]
+    
+    return result.lstrip().rstrip().replace("  "," ")
+```
