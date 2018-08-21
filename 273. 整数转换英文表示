@@ -1,4 +1,4 @@
-```
+```python
 def numberToWords(self, num):
     """
     :type num: int
