@@ -1,4 +1,4 @@
-```python
+'''
 def numberToWords(self, num):
     """
     :type num: int
@@ -40,4 +40,4 @@ def numberToWords(self, num):
                 result = result + ' ' + singles[a//1] + ' ' + scales[i//3]
     
     return result.lstrip().rstrip().replace("  "," ")
-```
+'''
